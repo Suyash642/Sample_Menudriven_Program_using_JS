@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Menudriven Program </title>
+
+<style>
+form
+{ font-weight:bold;
+  font-size:16px;
+  font-family:helvetica, arial;
+}
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  font-size:15px;
+  font-style:cambria;
+  margin: 15px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+h1,h3
+{
+  font-family:"cambria";
+  color:white;
+}
+
+button
+{
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;            
+  border-radius: 10px;
+  display: block;
+  background-image: linear-gradient(to right, slateblue 0%,darkslateblue 50%)         
+}
+
+body
+{
+  background-color: #0093E9;
+  background-image: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+}
+</style>
+</head>
+
+<body>
+
+<script>
+function validateform()
+{
+if(document.myform.choice.value == '')
+    {
+    	alert("Please fill choice field !!");
+        document.myform.choice.value.focus();
+        return false;
+    }
+
+if(document.myform.choice.value.match(/^[0-9\s]+$/)== null)
+    {
+    	alert('Choice fields must have numeric characters only!');
+        document.myform.choice.value.focus();
+        return false;
+    }
+}
+
+function disable()
+{
+   	if(document.myform.choice.value == 1)
+	{
+		document.getElementById("num").disabled = true;
+	}
+	if(document.myform.choice.value == 2)
+	{
+		document.getElementById("fnum").disabled = true;
+		document.getElementById("snum").disabled = true;
+	}
+}
+
+function choose()
+{ 
+validateform();
+var c = parseInt(document.getElementById("ch").value);
+switch(c)
+{
+    case 1:
+    var a,b;
+    a=parseInt(document.getElementById("fnum").value);
+    b=parseInt(document.getElementById("snum").value);
+    a=a-b;
+    b=a+b;
+    a=b-a;
+    alert("The Swapped Numbers are a ="+a + ", b ="+b);
+    break;
+    
+    case 2:
+    var n = parseInt(document.getElementById("num").value);
+    var sum=0;
+    while(n!=0)
+    {
+        sum+=n%10;
+        n=parseInt(n/10);
+    }
+    alert("The Sum of Digits is "+ sum);
+    break;
+    
+    default:
+    alert("Your Choice is wrong !!!");
+    
+}
+}
+
+</script>
+
+<h1 align = "center"> Menudriven Program for </h1>
+<h3 > 1. Swapping of 2 numbers without temp. variable <br> 2. Sum of digits of a number </h3>
+<hr><br>
+<form name="myform">
+ Your Choice :-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" id="ch" name="choice" placeholder="Enter Choice.." oninput="disable()">
+<br><br>
+ Enter 1st Number :-&nbsp
+<input type="text" id="fnum" name="fnum" placeholder="Enter 1st no..." >
+<br><br>
+ Enter 2nd Number :-
+<input type="text" id="snum" name="snum" placeholder="Enter 2nd no..." >
+<br><br>
+ Enter a Number :-&nbsp&nbsp&nbsp&nbsp
+<input type="text" id="num" name="num" placeholder="Enter Number..." >
+<br><br>
+<button type="button" onclick="choose()"> Submit </button> 
+<br><br>
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
